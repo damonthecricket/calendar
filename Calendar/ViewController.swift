@@ -9,12 +9,16 @@
 import UIKit
 
 class ViewController: UIViewController {
+    @IBOutlet weak var monthView: MonthView!
 
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        // Do any additional setup after loading the view.
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        let calendar = Calendar.current
+        let date = Date()
+        let year = calendar.component(.year, from: date)
+        let month = calendar.component(.month, from: date)
+        monthView.adjustWith(year: year, month: month)
     }
-
-
 }
 

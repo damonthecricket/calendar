@@ -62,9 +62,9 @@
 				4EE53D6223E80F8E00DAE74F /* SceneDelegate.swift */,
 				4EE53D6423E80F8E00DAE74F /* ViewController.swift */,
 				4EE53D7423E80FCF00DAE74F /* MonthView.swift */,
-				4EE53D6623E80F8E00DAE74F /* Main.storyboard */,
 				4EE53D6923E80F9000DAE74F /* Assets.xcassets */,
 				4EE53D6B23E80F9000DAE74F /* LaunchScreen.storyboard */,
+				4EE53D6623E80F8E00DAE74F /* Main.storyboard */,
 				4EE53D6E23E80F9000DAE74F /* Info.plist */,
 			);
 			path = Calendar;

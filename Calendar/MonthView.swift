@@ -30,6 +30,7 @@ class MonthView: UIView {
     func postInitSetup() {
         let monthLabelHeight = bounds.height/5
         monthLabel.frame = CGRect(x: 0.0, y: 0.0, width: bounds.width, height: monthLabelHeight)
+        monthLabel.font = UIFont.boldSystemFont(ofSize: 20.0)
         monthLabel.textAlignment = .center
         monthLabel.text = "Month"
         monthLabel.textColor = .black
@@ -42,12 +43,11 @@ class MonthView: UIView {
         monthLabel.leftAnchor.constraint(equalTo: leftAnchor, constant: 0.0).isActive = true
         
         var lastX: CGFloat = 0.0
-        let dayLabelWidth: CGFloat = bounds.width/6
+        let dayLabelWidth: CGFloat = bounds.width/7
         let dayLabelHeight: CGFloat = bounds.height/6
-        for idx in 0 ..< 6 {
+        for idx in 0 ..< 7 {
             let lbl = UILabel(frame: CGRect(x: lastX, y: 0.0, width: dayLabelWidth, height: dayLabelHeight))
             lbl.textAlignment = .center
-            lbl.text = "1"
             lbl.textColor = .black
             lbl.adjustsFontSizeToFitWidth = true
             lbl.translatesAutoresizingMaskIntoConstraints = false
@@ -67,11 +67,10 @@ class MonthView: UIView {
         
         lastX = 0.0
         
-        for idx in 0 ..< 6 {
+        for idx in 0 ..< 7 {
             let previousFirstLabel = firstWeekLabels[0]
             let lbl = UILabel(frame: CGRect(x: lastX, y: previousFirstLabel.frame.maxY, width: dayLabelWidth, height: dayLabelHeight))
             lbl.textAlignment = .center
-            lbl.text = "1"
             lbl.textColor = .black
             lbl.adjustsFontSizeToFitWidth = true
             lbl.translatesAutoresizingMaskIntoConstraints = false
@@ -91,11 +90,10 @@ class MonthView: UIView {
         
         lastX = 0.0
         
-        for idx in 0 ..< 6 {
+        for idx in 0 ..< 7 {
             let previousFirstLabel = secondWeekLabels[0]
             let lbl = UILabel(frame: CGRect(x: lastX, y: previousFirstLabel.frame.maxY, width: dayLabelWidth, height: dayLabelHeight))
             lbl.textAlignment = .center
-            lbl.text = "1"
             lbl.textColor = .black
             lbl.adjustsFontSizeToFitWidth = true
             lbl.translatesAutoresizingMaskIntoConstraints = false
@@ -115,11 +113,10 @@ class MonthView: UIView {
         
         lastX = 0.0
         
-        for idx in 0 ..< 6 {
+        for idx in 0 ..< 7 {
             let previousFirstLabel = thirdWeekLabels[0]
             let lbl = UILabel(frame: CGRect(x: lastX, y: previousFirstLabel.frame.maxY, width: dayLabelWidth, height: dayLabelHeight))
             lbl.textAlignment = .center
-            lbl.text = "1"
             lbl.textColor = .black
             lbl.adjustsFontSizeToFitWidth = true
             lbl.translatesAutoresizingMaskIntoConstraints = false
@@ -139,11 +136,10 @@ class MonthView: UIView {
         
         lastX = 0.0
         
-        for idx in 0 ..< 6 {
+        for idx in 0 ..< 7 {
             let previousFirstLabel = fourthWeekLabels[0]
             let lbl = UILabel(frame: CGRect(x: lastX, y: previousFirstLabel.frame.maxY, width: dayLabelWidth, height: dayLabelHeight))
             lbl.textAlignment = .center
-            lbl.text = "1"
             lbl.textColor = .black
             lbl.adjustsFontSizeToFitWidth = true
             lbl.translatesAutoresizingMaskIntoConstraints = false
@@ -163,11 +159,10 @@ class MonthView: UIView {
         
         lastX = 0.0
         
-        for idx in 0 ..< 6 {
+        for idx in 0 ..< 7 {
             let previousFirstLabel = fifthWeekLabels[0]
             let lbl = UILabel(frame: CGRect(x: lastX, y: previousFirstLabel.frame.maxY, width: dayLabelWidth, height: dayLabelHeight))
             lbl.textAlignment = .center
-            lbl.text = "1"
             lbl.textColor = .black
             lbl.adjustsFontSizeToFitWidth = true
             lbl.translatesAutoresizingMaskIntoConstraints = false
@@ -187,6 +182,50 @@ class MonthView: UIView {
     }
     
     func adjustWith(year: Int, month: Int) {
-        
+        var components = DateComponents()
+        components.year = year
+        components.month = month
+        components.day = 1
+        let calendar = Calendar.current
+        let date = calendar.date(from: components)!
+        let formatter = DateFormatter()
+        formatter.dateFormat = "LLLL"
+        monthLabel.text = formatter.string(from: date)
+        let range = calendar.range(of: .day, in: .month, for: date)!
+        var count: Int = 1
+        calendar.enumerateDates(startingAfter: date, matching: DateComponents(hour: 1), matchingPolicy: .strict) {d, _, stop in
+            let day = calendar.component(.day, from: d!)
+            let weekDay = calendar.component(.weekday, from: d!)
+            let weekOfMonth = calendar.component(.weekOfMonth, from: d!)
+            var lbl: UILabel = firstWeekLabels[0]
+            if weekOfMonth == 1 {
+                lbl = firstWeekLabels[weekDay - 1]
+                lbl.text = "\(day)"
+            } else if weekOfMonth == 2 {
+                lbl = secondWeekLabels[weekDay - 1]
+                lbl.text = "\(day)"
+            } else if weekOfMonth == 3 {
+                lbl = thirdWeekLabels[weekDay - 1]
+                lbl.text = "\(day)"
+            } else if weekOfMonth == 4 {
+                lbl = fourthWeekLabels[weekDay - 1]
+                lbl.text = "\(day)"
+            } else if weekOfMonth == 5 {
+                lbl = fifthWeekLabels[weekDay - 1]
+                lbl.text = "\(day)"
+            } else if weekOfMonth == 6 {
+                lbl = sixsWeekLabels[weekDay - 1]
+                lbl.text = "\(day)"
+            }
+            let currentDate = Date()
+            let currentYear = calendar.component(.year, from: currentDate)
+            let currentMonth = calendar.component(.month, from: currentDate)
+            let currentDay = calendar.component(.day, from: currentDate)
+            if currentYear == year && currentMonth == month && currentDay == day {
+                lbl.backgroundColor = .red
+            }
+            count += 1
+            stop = count == range.count + 1
+        }
     }
 }
