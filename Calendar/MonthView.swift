@@ -45,11 +45,12 @@ class MonthView: UIView {
         var lastX: CGFloat = 0.0
         let dayLabelWidth: CGFloat = bounds.width/7
         let dayLabelHeight: CGFloat = bounds.height/6
+        let font = UIFont.systemFont(ofSize: 12.0)
         for idx in 0 ..< 7 {
             let lbl = UILabel(frame: CGRect(x: lastX, y: 0.0, width: dayLabelWidth, height: dayLabelHeight))
+            lbl.font = font
             lbl.textAlignment = .center
             lbl.textColor = .black
-            lbl.adjustsFontSizeToFitWidth = true
             lbl.translatesAutoresizingMaskIntoConstraints = false
             addSubview(lbl)
             firstWeekLabels.append(lbl)
@@ -72,7 +73,7 @@ class MonthView: UIView {
             let lbl = UILabel(frame: CGRect(x: lastX, y: previousFirstLabel.frame.maxY, width: dayLabelWidth, height: dayLabelHeight))
             lbl.textAlignment = .center
             lbl.textColor = .black
-            lbl.adjustsFontSizeToFitWidth = true
+            lbl.font = font
             lbl.translatesAutoresizingMaskIntoConstraints = false
             addSubview(lbl)
             secondWeekLabels.append(lbl)
@@ -95,7 +96,7 @@ class MonthView: UIView {
             let lbl = UILabel(frame: CGRect(x: lastX, y: previousFirstLabel.frame.maxY, width: dayLabelWidth, height: dayLabelHeight))
             lbl.textAlignment = .center
             lbl.textColor = .black
-            lbl.adjustsFontSizeToFitWidth = true
+            lbl.font = font
             lbl.translatesAutoresizingMaskIntoConstraints = false
             addSubview(lbl)
             thirdWeekLabels.append(lbl)
@@ -118,7 +119,7 @@ class MonthView: UIView {
             let lbl = UILabel(frame: CGRect(x: lastX, y: previousFirstLabel.frame.maxY, width: dayLabelWidth, height: dayLabelHeight))
             lbl.textAlignment = .center
             lbl.textColor = .black
-            lbl.adjustsFontSizeToFitWidth = true
+            lbl.font = font
             lbl.translatesAutoresizingMaskIntoConstraints = false
             addSubview(lbl)
             fourthWeekLabels.append(lbl)
@@ -141,7 +142,7 @@ class MonthView: UIView {
             let lbl = UILabel(frame: CGRect(x: lastX, y: previousFirstLabel.frame.maxY, width: dayLabelWidth, height: dayLabelHeight))
             lbl.textAlignment = .center
             lbl.textColor = .black
-            lbl.adjustsFontSizeToFitWidth = true
+            lbl.font = font
             lbl.translatesAutoresizingMaskIntoConstraints = false
             addSubview(lbl)
             fifthWeekLabels.append(lbl)
@@ -164,7 +165,7 @@ class MonthView: UIView {
             let lbl = UILabel(frame: CGRect(x: lastX, y: previousFirstLabel.frame.maxY, width: dayLabelWidth, height: dayLabelHeight))
             lbl.textAlignment = .center
             lbl.textColor = .black
-            lbl.adjustsFontSizeToFitWidth = true
+            lbl.font = font
             lbl.translatesAutoresizingMaskIntoConstraints = false
             addSubview(lbl)
             sixsWeekLabels.append(lbl)

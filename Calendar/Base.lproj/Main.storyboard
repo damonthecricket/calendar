@@ -14,26 +14,9 @@
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="DbZ-HT-cjJ" customClass="MonthView" customModule="Calendar" customModuleProvider="target">
-                                <rect key="frame" x="87" y="328" width="240" height="240"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="240" id="8Im-sT-u1K"/>
-                                    <constraint firstAttribute="height" constant="240" id="js4-xr-lwi"/>
-                                </constraints>
-                            </view>
-                        </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
-                        <constraints>
-                            <constraint firstItem="DbZ-HT-cjJ" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="GNt-T0-Wp6"/>
-                            <constraint firstItem="DbZ-HT-cjJ" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="L1v-aY-8CU"/>
-                        </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
-                    <connections>
-                        <outlet property="monthView" destination="DbZ-HT-cjJ" id="EEM-w2-BeY"/>
-                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
