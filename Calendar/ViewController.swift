@@ -17,6 +17,11 @@ class ViewController: UIViewController {
     var mayMonthView: MonthView!
     var juneMonthView: MonthView!
     var julyMonthView: MonthView!
+    var augustMonthView: MonthView!
+    var septemberMonthView: MonthView!
+    var octoberMonthView: MonthView!
+    var novemberMonthView: MonthView!
+    var decemberMonthView: MonthView!
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -89,6 +94,46 @@ class ViewController: UIViewController {
         julyMonthView.widthAnchor.constraint(equalToConstant: width).isActive = true
         julyMonthView.heightAnchor.constraint(equalToConstant: height).isActive = true
         julyMonthView.leftAnchor.constraint(equalTo: view.leftAnchor, constant: 0.0).isActive = true
+        
+        augustMonthView = MonthView(frame: CGRect(x: julyMonthView.frame.maxX, y: mayMonthView.frame.maxY, width: width, height: height))
+        augustMonthView.translatesAutoresizingMaskIntoConstraints = false
+        view.addSubview(augustMonthView)
+        augustMonthView.topAnchor.constraint(equalTo: mayMonthView.bottomAnchor, constant: 0.0).isActive = true
+        augustMonthView.widthAnchor.constraint(equalToConstant: width).isActive = true
+        augustMonthView.heightAnchor.constraint(equalToConstant: height).isActive = true
+        augustMonthView.leftAnchor.constraint(equalTo: julyMonthView.rightAnchor, constant: 0.0).isActive = true
+        
+        septemberMonthView = MonthView(frame: CGRect(x: augustMonthView.frame.maxX, y: juneMonthView.frame.maxY, width: width, height: height))
+        septemberMonthView.translatesAutoresizingMaskIntoConstraints = false
+        view.addSubview(septemberMonthView)
+        septemberMonthView.topAnchor.constraint(equalTo: juneMonthView.bottomAnchor, constant: 0.0).isActive = true
+        septemberMonthView.widthAnchor.constraint(equalToConstant: width).isActive = true
+        septemberMonthView.heightAnchor.constraint(equalToConstant: height).isActive = true
+        septemberMonthView.leftAnchor.constraint(equalTo: augustMonthView.rightAnchor, constant: 0.0).isActive = true
+        
+        octoberMonthView = MonthView(frame: CGRect(x: 0.0, y: julyMonthView.frame.maxY, width: width, height: height))
+        octoberMonthView.translatesAutoresizingMaskIntoConstraints = false
+        view.addSubview(octoberMonthView)
+        octoberMonthView.topAnchor.constraint(equalTo: julyMonthView.bottomAnchor, constant: 0.0).isActive = true
+        octoberMonthView.widthAnchor.constraint(equalToConstant: width).isActive = true
+        octoberMonthView.heightAnchor.constraint(equalToConstant: height).isActive = true
+        octoberMonthView.leftAnchor.constraint(equalTo: view.leftAnchor, constant: 0.0).isActive = true
+        
+        novemberMonthView = MonthView(frame: CGRect(x: 0.0, y: augustMonthView.frame.maxY, width: width, height: height))
+        novemberMonthView.translatesAutoresizingMaskIntoConstraints = false
+        view.addSubview(novemberMonthView)
+        novemberMonthView.topAnchor.constraint(equalTo: augustMonthView.bottomAnchor, constant: 0.0).isActive = true
+        novemberMonthView.widthAnchor.constraint(equalToConstant: width).isActive = true
+        novemberMonthView.heightAnchor.constraint(equalToConstant: height).isActive = true
+        novemberMonthView.leftAnchor.constraint(equalTo: octoberMonthView.rightAnchor, constant: 0.0).isActive = true
+        
+        decemberMonthView = MonthView(frame: CGRect(x: 0.0, y: septemberMonthView.frame.maxY, width: width, height: height))
+        decemberMonthView.translatesAutoresizingMaskIntoConstraints = false
+        view.addSubview(decemberMonthView)
+        decemberMonthView.topAnchor.constraint(equalTo: septemberMonthView.bottomAnchor, constant: 0.0).isActive = true
+        decemberMonthView.widthAnchor.constraint(equalToConstant: width).isActive = true
+        decemberMonthView.heightAnchor.constraint(equalToConstant: height).isActive = true
+        decemberMonthView.leftAnchor.constraint(equalTo: novemberMonthView.rightAnchor, constant: 0.0).isActive = true
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -102,11 +147,11 @@ class ViewController: UIViewController {
         mayMonthView.adjustWith(year: y, month: 5)
         juneMonthView.adjustWith(year: y, month: 6)
         julyMonthView.adjustWith(year: y, month: 7)
-//        augustMonthView.adjustWith(year: year, month: 8)
-//        septemberMonthView.adjustWith(year: year, month: 9)
-//        octoberMonthView.adjustWith(year: year, month: 10)
-//        novemberMonthView.adjustWith(year: year, month: 11)
-//        decemberMonthView.adjustWith(year: year, month: 12)
+        augustMonthView.adjustWith(year: y, month: 8)
+        septemberMonthView.adjustWith(year: y, month: 9)
+        octoberMonthView.adjustWith(year: y, month: 10)
+        novemberMonthView.adjustWith(year: y, month: 11)
+        decemberMonthView.adjustWith(year: y, month: 12)
     }
     
     func year() -> Int {
